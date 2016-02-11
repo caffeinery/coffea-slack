@@ -34,3 +34,6 @@ node_modules
 
 # Output from `webpack`
 lib
+
+# test file
+test.js

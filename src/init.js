@@ -1,3 +1,7 @@
+import { WebClient, RtmClient } from 'slack-client'
+
 export default function init (token) {
-  // TODO: connect to slack with token and return instance
+  const rtm = new RtmClient(token, {})
+  const web = new WebClient(token)
+  return { web, rtm }
 }
