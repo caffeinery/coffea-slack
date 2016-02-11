@@ -1,6 +1,6 @@
-import message from './message'
+import makeMessageHandler from './message'
 
 export default function makeHandler (instance) {
-  'message': message(instance)
+  'message': makeMessageHandler(instance)
   // TODO: list others here
 }
