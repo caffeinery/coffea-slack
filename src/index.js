@@ -1,3 +1,4 @@
+import init from './init'
 import makeHandler from './handler'
 
 export default function slack (config, dispatch) {
