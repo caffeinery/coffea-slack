@@ -1,5 +1,4 @@
-import { error } from '../../coffea/src/index'
-// TODO: publish working coffea @beta version and import here
+import { error } from 'coffea'
 
 export default function events (instance, dispatch) {
   const { rtm, web } = instance

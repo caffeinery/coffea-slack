@@ -1,6 +1,6 @@
 {
   "name": "coffea-slack",
-  "version": "1.0.0-beta1",
+  "version": "1.0.0-beta2",
   "devDependencies": {
     "babel-core": "^6.5.1",
     "babel-loader": "^6.2.2",
@@ -10,7 +10,7 @@
     "webpack": "^1.12.13"
   },
   "dependencies": {
-    "coffea": "^1.0.0-beta1",
+    "coffea": "^1.0.0-beta6",
     "slack-client": "^2.0.0-beta.2"
   }
 }
