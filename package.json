@@ -1,6 +1,7 @@
 {
   "name": "coffea-slack",
-  "version": "1.0.0-beta2",
+  "version": "1.0.0-beta3",
+  "main": "lib/index.js",
   "devDependencies": {
     "babel-core": "^6.5.1",
     "babel-plugin-transform-object-rest-spread": "^6.5.0",
