@@ -13,7 +13,7 @@ npm install --save coffea-slack
 ## Example
 
 ```js
-import connect, { message } from 'coffea'
+import { connect, message } from 'coffea'
 const networks = connect([
   {
      protocol: 'slack',
