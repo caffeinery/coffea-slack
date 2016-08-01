@@ -1,44 +1,47 @@
 # coffea-slack
 
-Work in progress :wink:
+_slack plugin for [coffea 1.0-beta](https://github.com/caffeinery/coffea/tree/1.0-beta)_
 
 
-## Installation
+## Setup
 
-```
-npm install --save coffea-slack
-```
+ * Make sure to use the latest *beta* version of coffea by running: `npm install --save coffea@beta`
+ * Install `coffea-slack`: `npm install coffea-slack`
 
 
-## Example
+## Usage
+
+Specify the slack protocol in your network config:
 
 ```js
-import { connect, message } from 'coffea'
-const networks = connect([
-  {
-     protocol: 'slack',
-     token: 'PUT_YOUR_SLACK_TOKEN_HERE'
-  }
-])
-
-// log all events
-networks.on('event', e => console.log(e))
-
-// reverse: reply with reversed message
-const reverse = (msg, send) => {
-  const reversedText = msg.text.split('').reverse().join('')
-  const reversedMessage = message(msg.channel, reversedText)
-
-  // you can send any slack RTM events via `send`
-  send(reversedMessage)
+{
+  "protocol": "slack",
+  "token": "xoxb-XXX", // required
+  "prefix": "." // optional, default: !
 }
-
-// listen to messages and call `reverse`
-networks.on('message', reverse)
 ```
 
+coffea will automatically load `coffea-slack` when it's needed! Thus, using slack (or other protocols) this way should work on **any** coffea project, **without any tweaks** (other than installing `coffea-slack` and specifying the config).
 
-## Implementation Details
+`coffea-slack` aims to be compatible with coffea. Of course, features that slack doesn't have (like audio messages) aren't available for slack protocols, they will just be ignored.
 
- * The `send` function (`networks.send` or in event listeners `(event, send)`) is a wrapper for the [node-slack-client](https://github.com/slackhq/node-slack-client) `rtm.send` function.
- * Only `message` and `error` events are forwarded right now.
+
+## API
+
+You can use the [Slack RTM API](https://api.slack.com/rtm) when sending events
+(make sure to use `chat` instead of `channel` for consistency with other protocols):
+
+```js
+networks.send({
+  type: 'message',
+  chat: 'D0KT6J8S3',
+  text: 'Hello world!'
+})
+```
+
+But for simple events, like `message`, you should use the coffea helper instead:
+
+```js
+import { message } from 'coffea'
+networks.send(message('Hello world!', 'D0KT6J8S3'))
+```

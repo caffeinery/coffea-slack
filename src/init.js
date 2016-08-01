@@ -1,4 +1,4 @@
-import { WebClient, RtmClient } from 'slack-client'
+import { WebClient, RtmClient } from '@slack/client'
 
 export default function init (token) {
   const rtm = new RtmClient(token, {})

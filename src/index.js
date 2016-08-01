@@ -4,8 +4,10 @@ import events from './events'
 export default function slack (config, dispatch) {
   const instance = init(config.token)
 
+  if (!config.prefix) config.prefix = '!'
+
   const { rtm } = instance // { rtm, web } for web api
-  events(instance, dispatch)
+  events(instance, config, dispatch)
 
   rtm.start()
 
@@ -16,5 +18,5 @@ export default function slack (config, dispatch) {
   // })
 
   // expose slack rtm api via calling events
-  return (event) => rtm.send(event)
+  return (evt) => rtm.send({ ...evt, channel: evt.chat })
 }

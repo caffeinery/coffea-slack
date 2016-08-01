@@ -1,6 +1,6 @@
 {
   "name": "coffea-slack",
-  "version": "1.0.0-beta3",
+  "version": "1.0.0-beta4",
   "main": "lib/index.js",
   "devDependencies": {
     "babel-core": "^6.5.1",
@@ -13,7 +13,8 @@
     "rimraf": "^2.5.2"
   },
   "dependencies": {
-    "coffea": "^1.0.0-beta6",
+    "@slack/client": "^3.5.3",
+    "coffea": "1.0.0-beta18",
     "slack-client": "^2.0.0-beta.2"
   },
   "scripts": {
